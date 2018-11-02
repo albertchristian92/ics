@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:weightSum="6"
+    tools:context=".MainActivity"
+    tools:ignore="PrivateResource">
+
+    <TextView
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@color/cardview_light_background"
+        android:drawableBottom="@drawable/head"
+        android:gravity="top"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:text="@string/record_the_mobile_phone_activity"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <ToggleButton
+            android:id="@+id/connectToServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:checked="false"
+            android:text="@string/connect"
+            android:textColor="@color/cardview_light_background"
+            android:textOff="@string/connect_to_server"
+            android:textOn="@string/disconnect"
+            android:textSize="30sp"
+            android:paddingTop="30sp"
+            android:paddingBottom="30sp"/>
+
+        <Button
+            android:id="@+id/permissionRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="@string/permission"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp"
+            android:paddingTop="30sp"
+            android:paddingBottom="30sp"/>
+
+        <Button
+            android:id="@+id/placeTimeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:paddingBottom="30sp"
+            android:paddingTop="30sp"
+            android:text="@string/place_timeline"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+</LinearLayout>
