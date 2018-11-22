@@ -7,43 +7,29 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.telephony.TelephonyManager;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import labelingStudy.nctu.minuku.config.Constants;
 import labelingStudy.nctu.minuku.logger.Log;
-import labelingStudy.nctu.minuku.manager.MinukuNotificationManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     public final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
-    private Button btn_permission, btn_Timeline;
-    private ToggleButton btn_connectServer;
+    private Button btn_permission, btn_Timeline, btn_DataUsage;
     private SharedPreferences sharedPrefs;
 
     String message ="";
-    private static String defaultIP = "140.113.86.142";
-    private String defaultName = "test";
-    private final int PORT = 5000;
 
-    public static ClientSocket client;
     private boolean startRec = false;
     private boolean connectedAvailable = false;
     private boolean mLocationPermissionGranted;
@@ -54,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_connectServer = (ToggleButton) findViewById(R.id.connectToServer);
-        connectClient();
+
         btn_permission = (Button) findViewById(R.id.permissionRequest);
         btn_permission.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         btn_Timeline = (Button) findViewById(R.id.placeTimeline);
         btn_Timeline.setOnClickListener(watchingMyTimeline);
+
+        btn_DataUsage = (Button) findViewById(R.id.dataUsage);
+        btn_DataUsage.setOnClickListener(watchingMyDataUsage);
 
         sharedPrefs = getSharedPreferences(Constants.sharedPrefString, MODE_PRIVATE);
 
@@ -101,21 +89,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void onResume(){
-        super.onResume();
-        btn_connectServer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    client.checkSocketConnection();
-                    startRecording();
-                } else {
-                    endRecording();
-                    connectClient();
+    private Button.OnClickListener watchingMyDataUsage = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
-                }
-            }
-        });
-    }
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+
+            startActivity(intent);
+
+        }
+    };
 
     @Override
     protected void onPause() {
@@ -135,23 +118,6 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 
         startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));	//location
-    }
-
-    private void connectClient() {
-        //Add Client socket to client
-        setClient(new ClientSocket(defaultIP, PORT));
-        //Set client connection as background execution
-        getClient().execute();
-        connectedAvailable =true;
-
-    }
-
-    private void setClient(ClientSocket client) {
-        this.client = client;
-    }
-
-    private ClientSocket getClient() {
-        return client;
     }
 
 
@@ -229,25 +195,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    private void startRecording(){
-        try {
-            //initial name
-            String nameTemp = ("test \n");
-            client.sendDataString(nameTemp);
-            System.out.println("name has been sent");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        startRec = true;
-    }
-    private void endRecording(){
-        client.sendDataString("#end#");
-        startRec = false;
-        client.disconnect();
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

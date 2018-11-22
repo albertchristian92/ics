@@ -393,7 +393,7 @@ public class Timeline extends AppCompatActivity {
                 String label_Transportation = "";
                 labelJson = new JSONObject(label);
 
-                label_Transportation = labelJson.getString(Constants.ANNOTATION_Label_TRANSPORTATOIN);
+                label_Transportation = labelJson.getString(Constants.ANNOTATION_Label_TRANSPORTATION);
 
                 //set the transportation (from label) icon and text
                 String transportation = getTransportationFromSpinnerItem(label_Transportation);
@@ -424,7 +424,7 @@ public class Timeline extends AppCompatActivity {
             }
 
             //if the user hasn't labeled, check the detected one
-            if(!labelJson.has(Constants.ANNOTATION_Label_TRANSPORTATOIN)){
+            if(!labelJson.has(Constants.ANNOTATION_Label_TRANSPORTATION)){
 
                 ArrayList<Annotation> annotations = annotationSet.getAnnotationByTag(Constants.ANNOTATION_TAG_DETECTED_TRANSPORTATOIN_ACTIVITY);
                 Annotation annotation = annotations.get(annotations.size()-1);
@@ -563,10 +563,10 @@ public class Timeline extends AppCompatActivity {
                 holder.cardView.setBackground(sd);
 
                 //if the trip is "此移動不存在", do not show it
-            }else if(labelJson.has(Constants.ANNOTATION_Label_TRANSPORTATOIN)){
+            }else if(labelJson.has(Constants.ANNOTATION_Label_TRANSPORTATION)){
                 try{
 
-                    String label_transportation = labelJson.getString(Constants.ANNOTATION_Label_TRANSPORTATOIN);
+                    String label_transportation = labelJson.getString(Constants.ANNOTATION_Label_TRANSPORTATION);
 
                     if(label_transportation.equals("Unknown")){
 
@@ -809,7 +809,7 @@ public class Timeline extends AppCompatActivity {
 
                                         try {
 
-                                            labelJson.put(Constants.ANNOTATION_Label_TRANSPORTATOIN, selectedActivityString);
+                                            labelJson.put(Constants.ANNOTATION_Label_TRANSPORTATION, selectedActivityString);
                                             labelJson.put(Constants.ANNOTATION_Label_GOAL, goal);
                                             labelJson.put(Constants.ANNOTATION_Label_SPECIALEVENT, specialEvent);
                                             labelJson.put(Constants.ANNOTATION_Label_SITENAME, sitename);

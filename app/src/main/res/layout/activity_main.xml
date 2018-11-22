@@ -33,16 +33,14 @@
         android:orientation="vertical"
         android:weightSum="2">
 
-        <ToggleButton
-            android:id="@+id/connectToServer"
+        <Button
+            android:id="@+id/dataUsage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
             android:checked="false"
-            android:text="@string/connect"
             android:textColor="@color/cardview_light_background"
-            android:textOff="@string/connect_to_server"
-            android:textOn="@string/disconnect"
+            android:text="@string/check_data_usage"
             android:textSize="30sp"
             android:paddingTop="30sp"
             android:paddingBottom="30sp"/>

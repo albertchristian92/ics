@@ -179,9 +179,7 @@ public class TelephonyStreamGenerator extends AndroidStreamGenerator<TelephonyDa
                 mPhoneSignalType = NETWORK_TYPE_LTE;
                 Log.d(TAG, String.valueOf(mPhoneSignalType));
                 dbm = Integer.parseInt(parts[10]);
-                //asu = 140 + dbm;
                 mLTESignalStrength_dbm = dbm;
-                //LTESignalStrength_asu = asu;
             }
             /** Else GSM 3G */
             else if (sStrength.isGsm()) {

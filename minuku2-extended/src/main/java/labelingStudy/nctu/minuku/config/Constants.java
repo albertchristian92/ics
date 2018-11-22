@@ -96,7 +96,7 @@ public class Constants {
     public static final String ANNOTATION_TAG_SITELOCATION = "Sitelocation";
     public static final String ANNOTATION_TAG_Label = "Label";
 
-    public static final String ANNOTATION_Label_TRANSPORTATOIN = "Transportation";
+    public static final String ANNOTATION_Label_TRANSPORTATION = "Transportation";
     public static final String ANNOTATION_Label_GOAL = "Goal";
     public static final String ANNOTATION_Label_SPECIALEVENT = "SpecialEvent";
     public static final String ANNOTATION_Label_SITENAME = "Sitename";

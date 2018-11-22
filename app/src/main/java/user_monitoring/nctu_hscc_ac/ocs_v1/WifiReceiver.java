@@ -13,6 +13,13 @@ import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.javatuples.Decade;
 import org.javatuples.Octet;
 import org.javatuples.Pair;
@@ -43,6 +50,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 
 import javax.net.ssl.HostnameVerifier;
@@ -57,16 +66,6 @@ import labelingStudy.nctu.minuku.Utilities.ScheduleAndSampleManager;
 import labelingStudy.nctu.minuku.config.Constants;
 import labelingStudy.nctu.minuku.manager.DBManager;
 import labelingStudy.nctu.minuku.streamgenerator.ConnectivityStreamGenerator;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Lawrence on 2017/8/16.
@@ -99,7 +98,6 @@ public class WifiReceiver extends BroadcastReceiver {
     String requestUrl = "http://140.113.86.142/ocs-receiver/receiver_data.php";
     String final_data="";
     Context con;
-//    public ClientSocket client;
 
     @Override
     public void onReceive(Context context, Intent intent) {

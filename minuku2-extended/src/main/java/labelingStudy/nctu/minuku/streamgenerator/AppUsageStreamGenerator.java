@@ -404,7 +404,7 @@ public class AppUsageStreamGenerator extends AndroidStreamGenerator<AppUsageData
         mLastestForegroundActivity=curForegroundActivity;
         mLastestForegroundPackage=curForegroundPackage;
 
-        Log.d(TAG, "[setCurrentForegroundActivityAndPackage] the current running package mIs " + mLastestForegroundActivity + " and the activity mIs " + mLastestForegroundPackage);
+        Log.d(TAG, "[setCurrentForegroundActivityAndPackage] the current running activity mIs " + mLastestForegroundActivity + " and the package mIs " + mLastestForegroundPackage);
     }
 
     public String getScreenStatus() {
