@@ -95,7 +95,7 @@ public class WifiReceiver extends BroadcastReceiver {
 
     public static int mainThreadUpdateFrequencyInSeconds = 10;
     public static long mainThreadUpdateFrequencyInMilliseconds = mainThreadUpdateFrequencyInSeconds * Constants.MILLISECONDS_PER_SECOND;
-    String requestUrl = "http://140.113.86.142/ocs-receiver/receiver_data.php";
+    String requestUrl = "<yourip>/ocs-receiver/receiver_data.php";
     String final_data="";
     Context con;
 
